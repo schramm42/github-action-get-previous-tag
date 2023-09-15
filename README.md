@@ -1,1 +1,1 @@
-# github-action-get-previous-tag
+# github-action-get-tags

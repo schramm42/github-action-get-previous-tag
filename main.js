@@ -6,6 +6,8 @@ const main = async () => {
     try {
         const revList = await getRevList()
         const tagList = await getTagList(revList)
+        console.log(revList)
+        console.log(tagList)
         const currentTag = tagList.shift()
         const previousTag = tagList.shift()
 

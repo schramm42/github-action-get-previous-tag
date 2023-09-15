@@ -1,15 +1,13 @@
-name: 'Get Latest Tag'
-description: 'Get the latest tag from git and outputs that for use in other actions'
+name: 'Get Tags'
+description: 'Get the current and previous tag from git and outputs that for use in other actions'
 branding:
   icon: 'tag'
   color: 'gray-dark'
-inputs:
-  fallback:
-    description: 'Fallback tag to use when no previous tag can be found'
-    required: false
 outputs:
-  tag:
-    description: 'Latest tag'
+  currentTag:
+    description: 'Current tag'
+  previousTag:
+    description: 'Previous tag'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'main.js'

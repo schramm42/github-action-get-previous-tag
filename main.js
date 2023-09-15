@@ -30,7 +30,7 @@ const main = async () => {
 }
 
 async function getTagList() {
-    const { stdout, stderr } = await exec(`git fetch --tags && git tag -l`)
+    const { stdout, stderr } = await exec(`git fetch --tags -q && git tag -l`)
     const list = stdout.split('\n').filter((val) => val != "").reverse()
 
     return list

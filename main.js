@@ -30,7 +30,7 @@ const main = async () => {
 }
 
 async function getTagList() {
-    const { fetchStdout, fetchStderr } = await exec(`git fetch --tags -q`)
+    const { fetchStdout, fetchStderr } = await exec(`git fetch --tags`)
     console.log(fetchStdout)
     console.error(fetchStderr)
     const { stdout, stderr } = await exec(`git tag -l`)

@@ -4,9 +4,10 @@ const exec = util.promisify(require('node:child_process').exec);
 
 const main = async () => {
     try {
-        const revList = await getRevList()
-        const tagList = await getTagList(revList)
-        console.log(revList)
+        // const revList = await getRevList()
+        // const tagList = await getTagList(revList)
+        const tagList = await getTagList()
+        //console.log(revList)
         console.log(tagList)
         const currentTag = tagList.shift()
         const previousTag = tagList.shift()
@@ -28,7 +29,14 @@ const main = async () => {
     }
 }
 
-async function getTagList(revList) {
+async function getTagList() {
+    const { stdout, stderr } = await exec(`git fetch --tags && git tag -l`)
+    const list = stdout.split('\n').filter((val) => val != "").reverse()
+
+    return list
+}
+
+async function getTagListByRevList(revList) {
     var result = []
     for (let item of revList) {
         try {

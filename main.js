@@ -1,7 +1,7 @@
 const { exec } = require('child_process');
 const fs = require('fs');
 
-exec(`git describe --abbrev=0 --tags "$(git describe --abbrev=0 --tags)^"`, (err, tag, stderr) => {
+exec(`git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1)`, (err, tag, stderr) => {
     tag = tag.trim();
 
     if (err) {
